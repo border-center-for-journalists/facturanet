@@ -1,20 +1,27 @@
 <script>
-	import Invoices from './components/Invoices.svelte';
-	import EntitySelector from './components/EntitySelector.svelte';
-	import fetchNode from "./helpers/FetchNode.js";
+  import Invoices from './components/Invoices.svelte';
+  import EntitySelector from './components/EntitySelector.svelte';
+  import Filters from './components/filters.svelte'
+  import fetchNode from "./helpers/FetchNode.js";
 
-	$: selectedEntity = undefined;
+  // $: selectedEntity = undefined;
+  // let filters = [undefined, undefined];
 
-	$: invoiceFetch = fetchNode('invoice', { sort : 'total DESC'} );
-	$: recipientFetch = fetchNode('entity', {recipient: 1 ,  limit: 50, sort: 'nombre ASC'} );
+  // console.log('FILTERS', filters);
+
+  let invoiceFetch = [];
+
+  function getInvoices(filter) {
+    const params = { ...filter, sort: 'total DESC' }
+    invoiceFetch = fetchNode('invoice', params);
+  }
+	// $: recipientFetch = fetchNode('entity', {recipient: 1 ,  limit: 50, sort: 'nombre ASC'} );
 </script>
 
 <main>
-	<h1>Facturanet</h1> 
-	{#await recipientFetch then entities}
-		<EntitySelector entities="{entities}" bind:selectedEntity />
-	{/await}
-	{#await invoiceFetch then invoices}
+  <h1>Facturanet</h1>
+  <Filters getInvoices={getInvoices} />
+  {#await invoiceFetch then invoices}
 		<Invoices invoices={invoices} />
 	{/await}
 </main>
