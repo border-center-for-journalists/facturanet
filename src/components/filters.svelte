@@ -55,9 +55,10 @@
   .filters{
     display: flex;
     margin: 0 -15px;
+    flex-wrap: wrap;
   }
   .item{
-    padding: 10px 15px;
+    padding: 0px 15px;
     width: 40%;
   }
   .item button{
@@ -70,5 +71,10 @@
     color: red;
     cursor: pointer;
     text-decoration: underline;
+  }
+  @media (max-width: 640px) {
+    .item{
+      width: 100%;
+    }
   }
 </style>
