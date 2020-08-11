@@ -8,12 +8,12 @@
   export let selectedEntity = undefined;
 
   // const items = entities.map(e => ({ label: e.nombre.toUpperCase(), value: e.rfc }));
-
+  // console.log('asdsada', selectedEntity)
 </script>
 
 <!-- <Select items={items} bind:selectedEntity  ></Select> -->
 <AutoComplete className='custom-autocomplete' onChange={onChange} bind:selectedItem={selectedEntity} items="{entities}"
-  labelFieldName='nombre' minCharactersToSearch="1" />
+  labelFieldName='nombre' minCharactersToSearch="1" valueFieldName="id" />
 
 <style>
   :global(.custom-autocomplete) {

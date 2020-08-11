@@ -3,7 +3,13 @@
   import fetchNode from "../helpers/FetchNode.js";
 
   export let getInvoices;
-  let filters = [undefined, undefined];
+  export let urlParams;
+  let filters = [
+    urlParams.receptor ? { id: urlParams.receptor } : undefined,
+    urlParams.emisor ? { id: urlParams.emisor } : undefined,
+  ];
+  // console.log('PARAMS filter', urlParams, filters)
+
   $: filtersObj = filters.reduce((r, f, i) => {
     if (f) {
       r[i === 0 ? 'receptor' : 'emisor'] = f.id;
