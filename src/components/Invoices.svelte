@@ -1,7 +1,7 @@
 <script>
-	import Items from './Items.svelte';
-	import formatNumber from "../helpers/formatNumber.js";
-	export let invoices;
+  import Items from './Items.svelte';
+  import formatNumber from "../helpers/FormatNumber.js";
+  export let invoices;
 
 </script>
 

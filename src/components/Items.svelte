@@ -1,11 +1,11 @@
 <script>
-	import formatNumber from "../helpers/formatNumber.js";
-	export let invoice;
+  import formatNumber from "../helpers/FormatNumber.js";
+  export let invoice;
 
-	const conceptos = invoice.Conceptos.concepto ? invoice.Conceptos.concepto : [invoice.Conceptos.Concepto];
+  const conceptos = invoice.Conceptos.concepto ? invoice.Conceptos.concepto : [invoice.Conceptos.Concepto];
 </script>
 <ul>
-	{#each conceptos as concepto}
+  {#each conceptos as concepto}
 	<li>
 		{concepto.cantidad} - 
 		{concepto.descripcion} - 
