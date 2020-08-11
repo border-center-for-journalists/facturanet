@@ -5,8 +5,8 @@
   export let getInvoices;
   export let urlParams;
   let filters = [
-    urlParams.receptor ? { id: urlParams.receptor } : undefined,
-    urlParams.emisor ? { id: urlParams.emisor } : undefined,
+    undefined,
+    undefined,
   ];
   // console.log('PARAMS filter', urlParams, filters)
 
@@ -32,7 +32,7 @@
         {/if}
       </p>
       <p>
-        <EntitySelector onChange={onChange} entities="{recipients}" bind:selectedEntity={filters[0]} />
+        <EntitySelector initValue={urlParams.receptor} onChange={onChange} entities="{recipients}" bind:selectedEntity={filters[0]} />
       </p>
     </div>
   {/await}
@@ -45,7 +45,7 @@
         {/if}
       </p>
       <p>
-        <EntitySelector onChange={onChange} entities="{emmiters}" bind:selectedEntity={filters[1]} />
+        <EntitySelector initValue={urlParams.emisor} onChange={onChange} entities="{emmiters}" bind:selectedEntity={filters[1]} />
       </p>
     </div>
   {/await}
