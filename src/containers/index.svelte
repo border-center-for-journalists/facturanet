@@ -58,7 +58,6 @@
 </script>
 
 <main>
-  <h1>Facturanet</h1>
   <Filters urlParams={queryParams} getInvoices={handleFilterChange} />
   <Invoices invoices={invoiceFetch} />
   <SvelteInfiniteScroll window threshold={100} on:loadMore={()=> nextPage()} />

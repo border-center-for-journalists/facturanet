@@ -5,9 +5,10 @@ html, body {
 }
 
 body {
-	color: #333;
+  color: #fff;
+  background-color: #000;
 	margin: 0;
-	padding: 8px;
+	padding: 0;
 	box-sizing: border-box;
 	font-family: "Helvetica Neue", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
