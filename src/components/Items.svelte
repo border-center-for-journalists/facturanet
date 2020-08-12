@@ -22,7 +22,12 @@
 </ul>
 
 {#if conceptos.length > minItems}
-<button on:click={toggleSeemore}>Ver {seemore?'más':'menos'}</button>
+<button on:click={toggleSeemore}>
+  <span>Ver {seemore?'más':'menos'}</span>
+  <span class="material-icons">
+    {seemore?'keyboard_arrow_down':'keyboard_arrow_up'}
+  </span>
+</button>
 {/if}
 
 <style>
@@ -47,7 +52,8 @@
     font-weight: bold;
     cursor: pointer;
   }
-  button:hover{
-    text-decoration:underline;
+  button span{
+    display: inline-block;
+    vertical-align: middle;
   }
 </style>
