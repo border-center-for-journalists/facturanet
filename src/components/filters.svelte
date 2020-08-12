@@ -1,4 +1,5 @@
 <script>
+  import { navigate } from "svelte-routing";
   import EntitySelector from './EntitySelector.svelte';
   import fetchNode from "../helpers/FetchNode.js";
 
@@ -19,7 +20,10 @@
   $: recipientFetch = fetchNode('entity', { recipient: 1, limit: 1000, sort: 'nombre ASC' });
   $: emmiterFetch = fetchNode('entity', { emmiter: 1, limit: 1000, sort: 'nombre ASC' });
   function onChange() {
-    getInvoices(filtersObj)
+    let urlParams = filtersObj.receptor ? `?receptor=${filtersObj.receptor}` : '';
+    urlParams += filtersObj.emisor ? `${(urlParams === '' ? '?' : '&')}emisor=${filtersObj.emisor}` : '';
+    navigate(`/${urlParams}`, { replace: true });
+    getInvoices();
   }
 </script>
 <div class='filters'>
