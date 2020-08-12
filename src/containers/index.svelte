@@ -69,10 +69,6 @@
 </main>
 
 <style>
-  main {
-    padding: 1em;
-    margin: 0 auto;
-  }
 
   h1 {
     color: #87255B;
@@ -80,11 +76,5 @@
     font-size: 2.8em;
     font-weight: 100;
     margin: 20px auto 30px;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
   }
 </style>

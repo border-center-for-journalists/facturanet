@@ -63,7 +63,8 @@
   }
   .item{
     padding: 0px 15px;
-    width: 40%;
+    width: 50%;
+    box-sizing: border-box;
   }
   .item button{
     background: transparent;

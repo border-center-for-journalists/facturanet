@@ -11,7 +11,7 @@
 		<h4 class='blue'>{formatNumber(invoice.total,invoice.moneda)}</h4>
 		<p class='blue'><strong>Fecha: </strong>{new Date(invoice.fecha).toLocaleDateString()}</p>
 		<hr />
-		<p class='blue'><strong>Conceptos</strong></p>
+		<p class='uppercase blue'><strong>Conceptos</strong></p>
 		<Items invoice={invoice} ></Items>		
 	</article>
 {/each}
@@ -40,6 +40,7 @@
   }
   h4{
     margin: 0;
+    font-size: 1.25em;
   }
   hr{
     border: 0 none;
@@ -48,8 +49,12 @@
   }
   p{
     margin: 0;
+    font-size: .9em;
   }
   .blue{
     color: #28bee6;
+  }
+  .uppercase{
+    text-transform: uppercase;
   }
 </style>

@@ -61,3 +61,12 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
+
+main{
+  display: block;
+  margin: 0 auto;
+  max-width: 1250px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1em;
+}
