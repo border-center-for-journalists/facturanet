@@ -1,6 +1,7 @@
 <script>
   import { Router, Link, Route } from "svelte-routing";
   import Inicio from "./containers/index.svelte";
+  import Entity from "./containers/entity.svelte";
   import Invoice from "./containers/invoice.svelte";
 
   export let url = "";
@@ -9,9 +10,10 @@
 <Router url="{url}">
   <nav>
     <Link to="/">Inicio</Link>
-    <Link to="/invoice">Invoice test</Link>
   </nav>
-  <Route path="/invoice" component={Invoice} />
+
+  <Route path="/entity/:id" component="{Entity}">
+  </Route>
   <Route path="/">
     <Inicio />
   </Route>
