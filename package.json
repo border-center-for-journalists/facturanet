@@ -19,6 +19,7 @@
   "dependencies": {
     "query-string": "^6.13.1",
     "sirv-cli": "^0.4.4",
+    "svelte-infinite-scroll": "^1.4.1",
     "svelte-routing": "^1.4.2"
   }
 }
