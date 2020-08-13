@@ -1,4 +1,5 @@
 <script>
+  import { Link } from "svelte-routing";
   import Items from './Items.svelte';
   import formatNumber from "../helpers/FormatNumber.js";
   export let invoices;
@@ -7,7 +8,10 @@
 
 {#each invoices as invoice}
 	<article>
-		<h3>{invoice.Emisor.nombre} - {invoice.Receptor.nombre}</h3>
+		<h3>
+      <Link to="/entity/{invoice.emisor}">{invoice.Emisor.nombre}</Link> - 
+      <Link to="/entity/{invoice.receptor}">{invoice.Receptor.nombre}</Link>
+    </h3>
 		<h4 class='blue'>{formatNumber(invoice.total,invoice.moneda)}</h4>
 		<p class='blue'><strong>Fecha: </strong>{new Date(invoice.fecha).toLocaleDateString()}</p>
 		<hr />
