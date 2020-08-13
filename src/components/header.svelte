@@ -1,5 +1,8 @@
+<script>
+  import { Link } from "svelte-routing";
+</script>
 <header>
-  <img alt='Facturanet' src='/logo_facturanet.png'>
+  <Link to='/'><img alt='Facturanet' src='/logo_facturanet.png'></Link>
 </header>
 
 <style>

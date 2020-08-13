@@ -4,6 +4,7 @@
   import Invoices from '../components/Invoices.svelte';
   import fetchNode from "../helpers/FetchNode.js";
   import formatNumber from "../helpers/FormatNumber.js";
+  import EntitiesResume from '../components/EntitiesResume.svelte';
 
   export let id;
   let page = 0;
@@ -32,66 +33,28 @@
   });
 
 </script>
-{#if entity}
-  <h1>{entity.nombre} - {entityType}</h1>
-  {#if amounts}
-    {#if amounts.result.totalsByEntityUSD.length > 0 }
-      <h3>Numero de facturas {entityTypeText} (USD): {totalUSD.count}</h3>
-      <h3>Total de facturas {entityTypeText} (USD): {formatNumber(totalUSD.total,'USD')}</h3>
-      <div class='rows'>
-        {#each amounts.result.totalsByEntityUSD as item }
-          <div class='item'>
-            <p>{item.entity.nombre}</p>
-            <p><strong>Numero de facturas:</strong> {item.count}</p>
-            <p><strong>Monto total:</strong> {formatNumber(item.total,'USD')}</p>
-          </div>
-        {/each}
-      </div>
-    {/if}
-    
-    {#if amounts.result.totalsByEntityMXN.length > 0 }
-      <h3>Numero de facturas {entityTypeText} (MXN): {totalMXN.count}</h3>
-      <h3>Total de facturas {entityTypeText} (MXN): {formatNumber(totalMXN.total,'MXN')}</h3>
-      <div class='rows'>
-        {#each amounts.result.totalsByEntityMXN as item }
-          <div class='item'>
-            <h4>{item.entity.nombre}</h4>
-            <p><strong>Numero de facturas:</strong> {item.count}</p>
-            <p><strong>Monto total:</strong> {formatNumber(item.total,'MXN')}</p>
-          </div>
-        {/each}
-      </div>
+
+<main>
+  {#if entity}
+    <h1>{entity.nombre} - {entityType}</h1>
+    {#if amounts}
+      {#if amounts.result.totalsByEntityUSD.length > 0 }
+        <h3>Numero de facturas {entityTypeText} (USD): <span class='blue'>{totalUSD.count}</span></h3>
+        <h3>Total de facturas {entityTypeText} (USD): <span class='blue'>{formatNumber(totalUSD.total,'USD')}</span></h3>
+        <EntitiesResume totalsByEntity={amounts.result.totalsByEntityUSD} currency='USD' />
+      {/if}
+      
+      {#if amounts.result.totalsByEntityMXN.length > 0 }
+        <h3>Numero de facturas {entityTypeText} (MXN): <span class='blue'>{totalMXN.count}</span></h3>
+        <h3>Total de facturas {entityTypeText} (MXN): <span class='blue'>{formatNumber(totalMXN.total,'MXN')}</span></h3>
+        <EntitiesResume totalsByEntity={amounts.result.totalsByEntityMXN} currency='MXN' />
+      {/if}
     {/if}
   {/if}
-
-{/if}
+</main>
 
 <style>
-  .rows{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
-  .item{
-    flex:1 0 45%;
-    max-width: 45%;
-    padding: 20px;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 9px -5px #000;
-    border-radius: 10px;
-    background-color: #fff;
-    margin: 10px 0;
-  }
-  .item p{
-    margin: 0;
-  }
-  .item h4{
-    margin: 0 0 15px 0;
-  }
-  @media (max-width: 800px) {
-    .item{
-      flex: 1;
-      min-width: 100%;
-    }
+  .blue{
+    color: #28bee6;
   }
 </style>
