@@ -35,9 +35,7 @@
         <button on:click={ () => filters[0] = undefined } >(Limpiar)</button>
         {/if}
       </p>
-      <p>
-        <EntitySelector initValue={urlParams.receptor} onChange={onChange} entities="{recipients}" bind:selectedEntity={filters[0]} />
-      </p>
+      <EntitySelector placeholder='Receptores' initValue={urlParams.receptor} onChange={onChange} entities="{recipients}" bind:selectedEntity={filters[0]} />
     </div>
   {/await}
   {#await emmiterFetch then emmiters}
@@ -48,9 +46,7 @@
         <button on:click={ () => filters[1] = undefined } >(Limpiar)</button>
         {/if}
       </p>
-      <p>
-        <EntitySelector initValue={urlParams.emisor} onChange={onChange} entities="{emmiters}" bind:selectedEntity={filters[1]} />
-      </p>
+      <EntitySelector placeholder='Emisores' initValue={urlParams.emisor} onChange={onChange} entities="{emmiters}" bind:selectedEntity={filters[1]} />
     </div>
   {/await}
 </div>
@@ -63,7 +59,8 @@
   }
   .item{
     padding: 0px 15px;
-    width: 40%;
+    width: 50%;
+    box-sizing: border-box;
   }
   .item button{
     background: transparent;
@@ -72,7 +69,7 @@
     margin: 0;
     margin-left: 10px;
     font-size: .8em;
-    color: red;
+    color: #61baff;
     cursor: pointer;
     text-decoration: underline;
   }
