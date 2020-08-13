@@ -12,23 +12,53 @@
       <Link to="/entity/{invoice.emisor}">{invoice.Emisor.nombre}</Link> - 
       <Link to="/entity/{invoice.receptor}">{invoice.Receptor.nombre}</Link>
     </h3>
-		<h4>{formatNumber(invoice.total,invoice.moneda)}</h4>
-		<p><strong>Fecha: </strong>{new Date(invoice.fecha).toLocaleDateString()}</p>
-		
-		<p><strong>Conceptos</strong></p>
+		<h4 class='blue'>{formatNumber(invoice.total,invoice.moneda)}</h4>
+		<p class='blue'><strong>Fecha: </strong>{new Date(invoice.fecha).toLocaleDateString()}</p>
+		<hr />
+		<p class='uppercase blue'><strong>Conceptos</strong></p>
 		<Items invoice={invoice} ></Items>		
 	</article>
 {/each}
 
 <style>
 	article{
-		background-color: #eee;
-		padding:10px 20px;
-		margin:10px 0;
-	}
+		padding:35px 50px 20px 70px;
+    margin:30px 0;
+    box-sizing: border-box;
+    line-height: 1.5em;
+  }
+  article:nth-child(even){
+    background-color: #fff;
+    color: #4c4c4c;
+  }
+  article:nth-child(odd){
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #28bee6;
+  }
 	h3{
-		margin:10px 0;
-		font-size: 1em;
-		font-weight:100;
-	}
+		margin:0;
+		font-size: 1.15em;
+    font-weight:bold;
+    text-transform: uppercase;
+  }
+  h4{
+    margin: 0;
+    font-size: 1.25em;
+  }
+  hr{
+    border: 0 none;
+    border-top: 1px solid #28bee6;
+    margin: 20px 0;
+  }
+  p{
+    margin: 0;
+    font-size: .9em;
+  }
+  .blue{
+    color: #28bee6;
+  }
+  .uppercase{
+    text-transform: uppercase;
+  }
 </style>

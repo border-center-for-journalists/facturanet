@@ -3,6 +3,7 @@
   import Inicio from "./containers/index.svelte";
   import Entity from "./containers/entity.svelte";
   import Invoice from "./containers/invoice.svelte";
+  import Header from "./components/header.svelte";
 
   export let url = "";
 </script>
@@ -11,9 +12,8 @@
   <nav>
     <Link to="/">Inicio</Link>
   </nav>
-
-  <Route path="/entity/:id" component="{Entity}">
-  </Route>
+  <Header />
+  <Route path="/entity/:id" component="{Entity}" />
   <Route path="/">
     <Inicio />
   </Route>
