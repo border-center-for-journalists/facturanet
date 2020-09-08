@@ -58,34 +58,21 @@
 </script>
 
 <main>
-  <h1>Facturanet</h1>
   <Filters urlParams={queryParams} getInvoices={handleFilterChange} />
   <Invoices invoices={invoiceFetch} />
-  <SvelteInfiniteScroll window threshold={100} on:loadMore={()=> nextPage()} />
-    {#if loadMore}
-    <p>Cargar mas elementos.</p>
+  <SvelteInfiniteScroll window threshold={100} on:loadMore={nextPage} />
+  {#if loadMore}
+    <p class='loadMore'>Cargar mas elementos.</p>
   {:else}
-    <p>No exiten mas elementos.</p>
+    <p class='loadMore'>No exiten mas elementos.</p>
   {/if}
 </main>
 
 <style>
-  main {
-    padding: 1em;
-    margin: 0 auto;
-  }
-
-  h1 {
-    color: #87255B;
-    text-transform: uppercase;
-    font-size: 2.8em;
-    font-weight: 100;
-    margin: 20px auto 30px;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
+  .loadMore{
+    text-align: center;
+    padding: 15px;
+    font-size: 1em;
+    color: #61baff;
   }
 </style>
