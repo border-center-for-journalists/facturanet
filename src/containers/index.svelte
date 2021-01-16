@@ -7,7 +7,7 @@
   import fetchNode from "../helpers/FetchNode.js";
 
   let page = 0;
-  let limit = 10;
+  let limit = 30;
   let loadMore = true;
   let loading = false;
   let windowLocation = (typeof window !== 'undefined') ? window.location.search : '';
