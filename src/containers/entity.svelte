@@ -32,7 +32,7 @@
     entity = await fetchNode(`entity/${id}`, {});
     domicilio = entity.DomicilioFiscal  ? entity.DomicilioFiscal : entity.Domicilio;
   });
-  const addressQuery = a => encodeURI([a.calle,a.noExterior,a.codigoPostal].join(' '));
+  const addressQuery = a => encodeURI([a.calle,a.noExterior,a.codigoPostal,a.domicilioEstado].join(' '));
 
 </script>
 
