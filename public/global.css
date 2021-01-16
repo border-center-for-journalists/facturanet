@@ -10,7 +10,7 @@ body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Helvetica Neue", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-family: "Helvetica Neue", Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
 }
 
 a {
@@ -69,4 +69,8 @@ main{
   width: 100%;
   box-sizing: border-box;
   padding: 1em;
+}
+
+.source-code{
+	font-family:"Source Code Pro";
 }

@@ -4,23 +4,29 @@
   import Invoices from '../components/Invoices.svelte';
   import fetchNode from "../helpers/FetchNode.js";
   import formatNumber from "../helpers/FormatNumber.js";
+  import normalizeAddress from "../helpers/NormalizeAddress.js";
   import EntitiesResume from '../components/EntitiesResume.svelte';
 
   export let id;
+  
+  const limit = 10;
+  
   let page = 0;
   let loadMore = true;
   let loading = false;
-  const limit = 10;
   let entity;
   let amounts;
-  let domicilio;
+  let address;
+  
   $: entityType = entity ? entity.emmiter ? 'emisor' : 'receptor' : '';
   $: entityTypeText = entity ? entity.emmiter ? 'Emitidas' : 'Recibidas' : '';
+  
   $: totalMXN = amounts ?
     amounts.result.totalsByEntityMXN.reduce(
       (t, e) => ({ total: t.total + e.total, count: t.count + e.count })
       , { total: 0, count: 0 })
     : 0;
+  
   $: totalUSD = amounts ?
     amounts.result.totalsByEntityUSD.reduce(
       (t, e) => ({ total: t.total + e.total, count: t.count + e.count })
@@ -30,22 +36,20 @@
   onMount(async () => {
     amounts = await fetchNode(`entity/amounts/${id}`, {});
     entity = await fetchNode(`entity/${id}`, {});
-    domicilio = entity.DomicilioFiscal  ? entity.DomicilioFiscal : entity.Domicilio;
+    address = normalizeAddress(entity);
   });
-  const addressQuery = a => encodeURI([a.calle,a.noExterior,a.codigoPostal,a.domicilioEstado].join(' '));
 
 </script>
 
 <main>
   {#if entity}
     <h1>{entity.nombre}</h1>
-    <section class='address'>
-      <h3><a target='_blank' href='https://www.google.com/maps/search/?api=1&query={addressQuery(domicilio)}'>
-        {domicilio.calle} {domicilio.noExterior} {#if domicilio.noInterior}-int. {domicilio.noInterior} {/if}
-      </a></h3>
-      <p>{domicilio.colonia}</p>
-      <p>{domicilio.codigoPostal} {domicilio.municipio}, {domicilio.estado}</p>
+    <section class='address source-code'>
+      <h3><a target='_blank' href='https://www.google.com/maps/search/?api=1&query={address.query}'> {address.line1} {address.int}</a></h3>
+      <p>{address.line2}</p>
+      <p>{address.line3}</p>
     </section>
+    <section class='source-code'>
     {#if amounts}
       {#if amounts.result.totalsByEntityUSD.length > 0 }
         <h3>Numero de facturas {entityTypeText} (USD): <span class='blue'>{totalUSD.count}</span></h3>
@@ -59,6 +63,7 @@
         <EntitiesResume totalsByEntity={amounts.result.totalsByEntityMXN} currency='MXN' />
       {/if}
     {/if}
+    </section>
   {/if}
 </main>
 

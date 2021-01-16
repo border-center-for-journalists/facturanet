@@ -2,6 +2,7 @@
   import formatNumber from "../helpers/FormatNumber.js";
   export let totalsByEntity = [];
   export let currency = 'MXN';
+  console.log(totalsByEntity);
 </script>
 
 <div class='rows'>
@@ -27,7 +28,6 @@
     padding: 20px;
     box-sizing: border-box;
     box-shadow: 0px 0px 9px -5px #000;
-    border-radius: 10px;
     background-color: #fff;
     margin: 10px 0;
     color: #000;
