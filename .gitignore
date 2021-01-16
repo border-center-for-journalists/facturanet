@@ -2,3 +2,13 @@
 /public/build/
 
 .DS_Store
+
+# Local Netlify folder
+.netlify
+
+# Headers file
+_headers
+
+# TODO
+surge.crt
+surge.key

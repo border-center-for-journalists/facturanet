@@ -8,12 +8,13 @@
 	<article>
 		<h3>
       <Router>
-        <a href="/entity/{invoice.emisor}" use:link>{invoice.Emisor.nombre}</a> - 
-        <a href="/entity/{invoice.receptor}" use:link>{invoice.Receptor.nombre}</a>
+        <a href="/entity/{invoice.emisor}" use:link> {invoice.Emisor.rfc} - {invoice.Emisor.nombre} </a> - 
+        <a href="/entity/{invoice.receptor}" use:link> {invoice.Receptor.rfc} {invoice.Receptor.nombre} </a>
       </Router>
     </h3>
 		<h4 class='blue'>{formatNumber(invoice.total,invoice.moneda)}</h4>
-		<p class='blue'><strong>Fecha: </strong>{new Date(invoice.fecha).toLocaleDateString()}</p>
+    <p class='blue'><strong>Fecha: </strong>{new Date(invoice.fecha).toLocaleDateString()}</p>
+    <p class='blue'><strong>Folio Fiscal: </strong>{invoice.uuid}</p>
 		<hr />
 		<p class='uppercase blue'><strong>Conceptos</strong></p>
 		<Items invoice={invoice} ></Items>		
@@ -21,7 +22,7 @@
 {/each}
 <style>
 	article{
-		padding:35px 50px 20px 70px;
+		padding:40px 30px;
     margin:30px 0;
     box-sizing: border-box;
     line-height: 1.5em;
@@ -43,13 +44,13 @@
   }
 	h3{
 		margin:0;
-		font-size: 1.15em;
+		font-size: 1em;
     font-weight:bold;
     text-transform: uppercase;
   }
   h4{
     margin: 0;
-    font-size: 1.25em;
+    font-size: 1em;
   }
   hr{
     border: 0 none;

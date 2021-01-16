@@ -5,7 +5,7 @@
   export let entities;
   export let onChange;
   export let initValue;
-  // export let placeholder;
+  export let placeholder;
   export let selectedEntity = undefined;
 
   if (initValue) {
@@ -15,7 +15,7 @@
 
 <div class='row'>
   <AutoComplete className='custom-autocomplete' onChange={onChange} bind:selectedItem={selectedEntity}
-    items="{entities}" labelFieldName='nombre' minCharactersToSearch="1" valueFieldName="id" />
+    items="{entities}" labelFieldName='nombre' minCharactersToSearch="1" valueFieldName="id" placeholder={placeholder} />
   <div class=search-label>
     <i class="material-icons">search</i>
   </div>

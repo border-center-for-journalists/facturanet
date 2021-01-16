@@ -40,18 +40,14 @@
       limit,
       skip: p * limit
     }
-    console.log('FILTER GET', params)
     const invoiceResult = await fetchNode('invoice', params);
     if (invoiceResult.length === 0) loadMore = false;
-    invoiceFetch = invoiceFetch.concat(invoiceResult)
-
-    console.log('RESULT', invoiceFetch, invoiceResult)
+    invoiceFetch = invoiceFetch.concat(invoiceResult);
     setTimeout(function () { loading = false }, 500);
   }
   function nextPage() {
     if (loading || !loadMore || invoiceFetch.length === 0) return;
     page += 1;
-    console.log('NEXT', page)
     getInvoices(page);
   }
 	// $: recipientFetch = fetchNode('entity', {recipient: 1 ,  limit: 50, sort: 'nombre ASC'} );
