@@ -13,22 +13,26 @@
   		  <h3><a target="_blank" href="/entity/{invoice.emisor}" use:link>{invoice.Emisor.nombre} </a></h3>
         <div class='address source-code'>
           <p><a href='https://www.google.com/search?q={invoice.Emisor.rfc}' target='_blank'>{invoice.Emisor.rfc}</a></p>
-          <p><a target='_blank' href='https://www.google.com/maps/search/?api=1&query={normalizeAddress(invoice.Emisor).query}'>
-            {normalizeAddress(invoice.Emisor).line1} 
-          </a></p>
-          <p>{normalizeAddress(invoice.Emisor).line2}</p>
-          <p>{normalizeAddress(invoice.Emisor).line3}</p>
+          {#if normalizeAddress(invoice.Emisor)}
+            <p><a target='_blank' href='https://www.google.com/maps/search/?api=1&query={normalizeAddress(invoice.Emisor).query}'>
+              {normalizeAddress(invoice.Emisor).line1} 
+            </a></p>
+            <p>{normalizeAddress(invoice.Emisor).line2}</p>
+            <p>{normalizeAddress(invoice.Emisor).line3}</p>
+          {/if}
         </div>
       </div>
       <div class='entity'>
         <h3><a target="_blank" href="/entity/{invoice.receptor}" use:link>{invoice.Receptor.nombre}</a></h3>
         <div class='address source-code'>          
           <p><a href='https://www.google.com/search?q={invoice.Receptor.rfc}' target='_blank'>{invoice.Receptor.rfc}</a></p>
-          <p><a target='_blank' href='https://www.google.com/maps/search/?api=1&query={normalizeAddress(invoice.Receptor).query}'>
-            {normalizeAddress(invoice.Receptor).line1} 
-          </a></p>
-          <p>{normalizeAddress(invoice.Receptor).line2}</p>
-          <p>{normalizeAddress(invoice.Receptor).line3}</p>
+          {#if normalizeAddress(invoice.Receptor)}
+            <p><a target='_blank' href='https://www.google.com/maps/search/?api=1&query={normalizeAddress(invoice.Receptor).query}'>
+              {normalizeAddress(invoice.Receptor).line1} 
+            </a></p>
+            <p>{normalizeAddress(invoice.Receptor).line2}</p>
+            <p>{normalizeAddress(invoice.Receptor).line3}</p>
+          {/if}
         </div>
 
       </div>
