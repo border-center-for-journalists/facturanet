@@ -1,4 +1,5 @@
 <script>
+  import { Router, link } from "svelte-routing";
   import formatNumber from "../helpers/FormatNumber.js";
   export let totalsByEntity = [];
   export let currency = 'MXN';
