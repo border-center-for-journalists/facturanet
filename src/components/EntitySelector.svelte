@@ -1,5 +1,4 @@
 <script>
-  /*import Select from 'svelte-select';*/
   import AutoComplete from "simple-svelte-autocomplete";
   import Item from './EntityItem.svelte'
   export let entities;
@@ -7,14 +6,23 @@
   export let initValue;
   export let placeholder;
   export let selectedEntity = undefined;
+  let prevEntity = undefined;
 
   if (initValue) {
     selectedEntity = entities.find(e => e.id === initValue);
+    prevEntity = entities.find(e => e.id === initValue);
+  }
+
+  function monitorChange(){
+    if(selectedEntity !== prevEntity){
+      prevEntity = selectedEntity;
+      onChange();
+    }
   }
 </script>
 
 <div class='row'>
-  <AutoComplete className='custom-autocomplete' onChange={onChange} bind:selectedItem={selectedEntity}
+  <AutoComplete className='custom-autocomplete' onChange={monitorChange} bind:selectedItem={selectedEntity}
     items="{entities}" labelFieldName='nombre' minCharactersToSearch="1" valueFieldName="id" placeholder={placeholder} />
   <div class=search-label>
     <i class="material-icons">search</i>

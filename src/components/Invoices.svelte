@@ -5,7 +5,7 @@
   import normalizeAddress from "../helpers/NormalizeAddress.js";
   export let invoices;
 </script>
-{#each invoices as invoice}
+{#each invoices as invoice (invoice.id)}
 	<article>
     <div class='entities'>
     <Router>
@@ -41,7 +41,7 @@
     <hr />
 		<h4 class='blue source-code'>{formatNumber(invoice.total,invoice.moneda)}</h4>
     <p class='blue'><strong class='source-code'>Fecha: </strong><span class='source-code'>{new Date(invoice.fecha).toLocaleDateString()}</span></p>
-    <p class='blue source-code'><strong>Folio Fiscal: </strong> <a href='https://facturanetxmls.s3.amazonaws.com/{invoice.uuid}.xml'>{invoice.uuid}</a></p>
+    <p class='blue source-code'><strong>Folio Fiscal: </strong> <a target_='_blank' href='https://facturanetxmls.s3.amazonaws.com/{invoice.uuid}.xml'>{invoice.uuid}</a></p>
 		<hr />
 		<p class='uppercase blue source-code'><strong>Conceptos</strong></p>
 		<Items invoice={invoice} ></Items>		

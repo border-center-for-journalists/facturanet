@@ -1,7 +1,6 @@
 <script>
   import { onMount } from 'svelte';
   import SvelteInfiniteScroll from "svelte-infinite-scroll";
-  import Invoices from '../components/Invoices.svelte';
   import fetchNode from "../helpers/FetchNode.js";
   import formatNumber from "../helpers/FormatNumber.js";
   import normalizeAddress from "../helpers/NormalizeAddress.js";

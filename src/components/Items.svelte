@@ -1,5 +1,5 @@
 <script>
-  import { slide } from 'svelte/transition';
+  //import { slide } from 'svelte/transition';
   import formatNumber from "../helpers/FormatNumber.js";
   export let invoice;
   const conceptos = invoice.Conceptos.concepto ? invoice.Conceptos.concepto : [invoice.Conceptos.Concepto];
@@ -12,7 +12,7 @@
 <ul>
   {#each conceptos as concepto, i}
     {#if i < minItems || !seemore && i>= minItems }
-      <li transition:slide>
+      <li >
         {concepto.cantidad} - 
         {concepto.descripcion} - 
         {formatNumber(concepto.importe,invoice.moneda)} 
